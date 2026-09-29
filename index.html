@@ -171,13 +171,13 @@ function scene(){
   const mg=new T.BufferGeometry();mg.setAttribute('position',new T.Float32BufferAttribute([2.7,0,0],3));
   const mm=new T.PointsMaterial({size:.16,sizeAttenuation:true}),mk=new T.Points(mg,mm);rl.add(mk);
   const ac=new T.Color(),dm=new T.Color();
-  recolor=()=>{const s=getComputedStyle(root);ac.set(s.getPropertyValue('--ac').trim());dm.set(s.getPropertyValue('--dim').trim());lm.color.copy(dm);rm.color.copy(ac);mm.color.copy(ac);if(still)draw(3)};
-  recolor();
   let mx=0,my=0,sx=0,sy=0,wide=true;
+  recolor=()=>{const s=getComputedStyle(root);ac.set(s.getPropertyValue('--ac').trim());dm.set(s.getPropertyValue('--dim').trim());lm.color.copy(dm);rm.color.copy(ac);mm.color.copy(ac);if(still)draw(3)};
   const size=()=>{const w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();wide=w>=1100;
     const vw=2*Math.tan(cam.fov*Math.PI/360)*6*cam.aspect;g.position.x=wide?(.74-.5)*vw:0;g.scale.setScalar(wide?1:.72);if(still)draw(3)};
   addEventListener('resize',size);size();
-  addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
+  recolor();
+  addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true})
   function draw(t){
     sx+=(mx-sx)*.05;sy+=(my-sy)*.05;
     g.rotation.y=t*.14+sx*.8;g.rotation.x=.22+sy*.5;rl.rotation.y=t*.4;mk.rotation.y=-t*.9;
