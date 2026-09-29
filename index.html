@@ -61,7 +61,7 @@ a:hover,a:focus-visible{background:var(--ac);color:var(--bg);outline:none}
 @media(prefers-reduced-motion:reduce){.tl::before,.te,.dot{animation:none!important}.te{opacity:1}}
 ::selection{background:var(--ac);color:var(--bg)}
 @media(max-width:560px){body{font-size:13.5px}#in label .h{display:none}.blk{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+/*@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}*/
 </style>
 </head>
 <body>
@@ -144,7 +144,7 @@ CMDS.resume=CMDS.contact;CMDS.certs=CMDS.education;CMDS.exp=CMDS.experience;CMDS
 
 function print(h,cls){const d=document.createElement('div');if(cls)d.className=cls;d.innerHTML=h;out.appendChild(d);out.scrollTop=out.scrollHeight;return d}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const still=false;
 let busy=false;
 
 let recolor=()=>{};
